@@ -35,3 +35,20 @@ getWeaponInfo = compile preprocessFileLineNumbers "other_functions\getWeaponInfo
 getVehicleInfo = compile preprocessFileLineNumbers "other_functions\getVehicleInfo.sqf";
 
 filterItem = compile preprocessFileLineNumbers "other_functions\filterItem.sqf";
+
+
+CBA_fnc_defaultParam = compile preprocessFileLineNumbers "cba_functions\fnc_defaultParam.sqf";
+
+CBA_fnc_find = compile preprocessFileLineNumbers "cba_functions\fnc_find.sqf";
+
+CBA_fnc_split = compile preprocessFileLineNumbers "cba_functions\fnc_split.sqf";
+
+
+respawnTruck = compile preprocessFileLineNumbers "other_functions\respawnTruck.sqf";
+
+deleteWreck = compile preprocessFileLineNumbers "other_functions\deleteWreck.sqf";
+
+despawnVehicle = compile preprocessFileLineNumbers "other_functions\despawnVehicle.sqf";
+
+call compile preprocessFile "=BTC=_TK_punishment\=BTC=_tk_init.sqf";
+_logistic = execVM "=BTC=_Logistic\=BTC=_Logistic_Init.sqf";
