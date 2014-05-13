@@ -37,6 +37,15 @@ getVehicleInfo = compile preprocessFileLineNumbers "other_functions\getVehicleIn
 filterItem = compile preprocessFileLineNumbers "other_functions\filterItem.sqf";
 
 
+equipLoadout = compile preprocessFileLineNumbers "db_functions\equipLoadout.sqf";
+
+saveLoadout = compile preprocessFileLineNumbers "db_functions\saveLoadout.sqf";
+
+getPlayerStats = compile preprocessFileLineNumbers "db_functions\getPlayerStats.sqf";
+
+updatePlayerStats = compile preprocessFileLineNumbers "db_functions\updatePlayerStats.sqf";
+
+
 CBA_fnc_defaultParam = compile preprocessFileLineNumbers "cba_functions\fnc_defaultParam.sqf";
 
 CBA_fnc_find = compile preprocessFileLineNumbers "cba_functions\fnc_find.sqf";
