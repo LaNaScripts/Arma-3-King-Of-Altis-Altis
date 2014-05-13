@@ -61,3 +61,38 @@ despawnVehicle = compile preprocessFileLineNumbers "other_functions\despawnVehic
 
 call compile preprocessFile "=BTC=_TK_punishment\=BTC=_tk_init.sqf";
 _logistic = execVM "=BTC=_Logistic\=BTC=_Logistic_Init.sqf";
+
+//map player markers
+onEachFrame
+{
+    private["_pos"];
+    {
+        if(player distance _x < 2000 && side _x == side player && alive _x && _x != player) then
+        {
+                _pos = visiblePosition _x;
+                _pos set[2,(getPosATL _x select 2) + 2.2];
+				
+				_color = [0,0,0,0];
+				if(side player == west) then
+				{
+					_color = [0,0,1,0.8];
+				};
+				if(side player == east) then
+				{
+					_color = [1,0,0,0.8];
+				};
+				if(side player == resistance) then
+				{
+					_color = [0,1,0,0.8];
+				};
+				
+				if(player distance _x < 40) then
+				{
+					drawIcon3D ["\a3\ui_f\data\map\Markers\Military\box_ca.paa",_color,_pos,1,1,0,name _x,0,0.04];
+				} else
+				{
+					drawIcon3D ["\a3\ui_f\data\map\Markers\Military\box_ca.paa",_color,_pos,1,1,0,"",0,0];
+				};
+        };
+    } forEach allUnits;
+};
