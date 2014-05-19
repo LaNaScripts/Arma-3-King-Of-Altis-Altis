@@ -1,7 +1,7 @@
-onLoadName = "King Of Altis";
-author = "TacEXE & Fepaje";
-onLoadMission="King Of Altis v0.1";
-loadScreen =  "loadingscreen.jpg";
+onLoadName = "King of Altis";
+author = "TacEXE";
+onLoadMission="This is a WIP modification by TacEXE based off of Fepaje's King Of Hill Rarek's Invade and Annex and Team Wastelands A3 Wasteland.";
+loadScreen =  "mission.jpg";
 onLoadIntroTime = 0;
 onLoadMissionTime = 0;
 
@@ -9,9 +9,9 @@ briefing = 0; //script
 
 class Header
 {
-	gameType=SK;
+	gameType=TDM;
 	minPlayers=1;
-	maxPlayers=48;
+	maxPlayers=50;
 };
 
 respawn = "BASE";
@@ -57,8 +57,6 @@ class RscPicture
 
 class RscTitles
 {
-	#include "=BTC=_Logistic\=BTC=_Lift\=BTC=_Hud.h"
-	
 	class statsScreen
 	{    
 		idd = -1;
@@ -113,29 +111,12 @@ class RscTitles
 				text = "0";
 				x = 0.85 * safezoneW + safezoneX;
                 y = 0.94 * safezoneH + safezoneY;
-                w = 0.04 * safezoneW;
+                w = 0.06 * safezoneW;
                 h = 0.04 * safezoneH;
 				
 				font = "PuristaMedium";
 				sizeEx = 0.07;
 				colorBackground[] = {0,0,1,0.5};
-				colorText[] = {1,1,1,1};
-			};
-			class statsred
-			{    
-				idc = 1003;
-				type = 0;
-				style = 0;
-				
-				text = "0";
-				x = 0.9 * safezoneW + safezoneX;
-                y = 0.94 * safezoneH + safezoneY;
-                w = 0.04 * safezoneW;
-                h = 0.04 * safezoneH;
-				
-				font = "PuristaMedium";
-				sizeEx = 0.07;
-				colorBackground[] = {1,0,0,0.5};
 				colorText[] = {1,1,1,1};
 			};
 			class statsind
@@ -145,9 +126,9 @@ class RscTitles
 				style = 0;
 				
 				text = "0";
-				x = 0.95 * safezoneW + safezoneX;
+				x = 0.92 * safezoneW + safezoneX;
                 y = 0.94 * safezoneH + safezoneY;
-                w = 0.04 * safezoneW;
+                w = 0.06 * safezoneW;
                 h = 0.04 * safezoneH;
 				
 				font = "PuristaMedium";
@@ -157,4 +138,37 @@ class RscTitles
 			};	
 		};
 	};
+   class wm_disp {
+        idd = -1;
+        onLoad = "uiNamespace setVariable ['wm_disp', _this select 0]";
+        fadein = 0;
+        fadeout = 0;
+        duration = 10e10;
+        controlsBackground[] = {};
+        objects[] = {};
+        class controls {
+            class wm_text2 {
+                idc = 1;
+                x = safeZoneX+0.027;//safeZoneW*0.01;
+                y = safeZoneY+safeZoneH-0.16;
+                w = 0.151*safeZoneH;
+                h = 0.057*safeZoneH;
+                shadow = 2;
+                class Attributes
+                {
+                    font = "PuristaMedium";
+                    color = "#FFFFFF";
+                    align = "left";
+                    valign = "middle";
+                    shadow = 2;
+                };
+                colorBackground[] = { 1, 0.3, 0, 0 };
+                font = "PuristaMedium";
+                size = 0.06*safeZoneH;
+                type = 13;
+                style = 0;
+                text="";
+            };
+        };
+    };
 };

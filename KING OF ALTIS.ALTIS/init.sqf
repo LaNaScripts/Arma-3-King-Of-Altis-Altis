@@ -32,8 +32,6 @@ getRankInfo = compile preprocessFileLineNumbers "other_functions\getRankInfo.sqf
 
 getWeaponInfo = compile preprocessFileLineNumbers "other_functions\getWeaponInfo.sqf";
 
-getVehicleInfo = compile preprocessFileLineNumbers "other_functions\getVehicleInfo.sqf";
-
 filterItem = compile preprocessFileLineNumbers "other_functions\filterItem.sqf";
 
 
@@ -62,12 +60,11 @@ despawnVehicle = compile preprocessFileLineNumbers "other_functions\despawnVehic
 call compile preprocessFile "=BTC=_TK_punishment\=BTC=_tk_init.sqf";
 _logistic = execVM "=BTC=_Logistic\=BTC=_Logistic_Init.sqf";
 
-//map player markers
 onEachFrame
 {
     private["_pos"];
     {
-        if(player distance _x < 2000 && side _x == side player && alive _x && _x != player) then
+        if(player distance _x < 800 && side _x == side player && alive _x && _x != player) then
         {
                 _pos = visiblePosition _x;
                 _pos set[2,(getPosATL _x select 2) + 2.2];
