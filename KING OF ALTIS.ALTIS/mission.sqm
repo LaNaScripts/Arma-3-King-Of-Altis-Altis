@@ -1632,7 +1632,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=12;
+		items=13;
 		class Item0
 		{
 			position[]={9177.2021,15.038859,21607.633};
@@ -1728,6 +1728,12 @@ class Mission
 			type="mil_dot";
 			colorName="ColorWEST";
 			angle=129.05797;
+		};
+		class Item12
+		{
+			position[]={9060.8643,17.198605,21424.771};
+			name="grp_1";
+			type="Empty";
 		};
 	};
 };

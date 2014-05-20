@@ -57,6 +57,8 @@ deleteWreck = compile preprocessFileLineNumbers "other_functions\deleteWreck.sqf
 
 despawnVehicle = compile preprocessFileLineNumbers "other_functions\despawnVehicle.sqf";
 
+call compile preProcessFile "grpSpawn.sqf";
+
 call compile preprocessFile "=BTC=_TK_punishment\=BTC=_tk_init.sqf";
 _logistic = execVM "=BTC=_Logistic\=BTC=_Logistic_Init.sqf";
 
@@ -99,6 +101,11 @@ if(isServer) then
 	"bluf" spawn respawnTruck;
 	"redf" spawn respawnTruck;
 	"indf" spawn respawnTruck;
+};
+
+if(isServer) then
+{
+	[WEST,"grp_1", random 50] call TAG_Grp_Spawn;
 };
 
 if(!isServer) then
