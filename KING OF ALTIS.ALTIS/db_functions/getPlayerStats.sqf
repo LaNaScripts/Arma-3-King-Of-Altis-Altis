@@ -13,7 +13,7 @@ if (isServer) then
 		serverRunningQuery = true;
 		_get = nil;
 		while {isNil("_get")} do {
-		_get = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommandAsync ['arma_one', '%1']", _query];
+		_get = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommandAsync ['ni369893_1_DB', '%1']", _query];
 		if (_get == "") then {
 			_get = nil;
 		};
@@ -29,7 +29,7 @@ if (isServer) then
 
 			_return = nil;
 			while {isNil("_return")} do {
-				_return = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommandAsync ['arma_one', '%1']", _query];
+				_return = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommandAsync ['ni369893_1_DB', '%1']", _query];
 				if (_return == "") then {
 					_return = nil;
 				};
@@ -42,7 +42,7 @@ if (isServer) then
 		
 		_get = nil;
 		while {isNil("_get")} do {
-			_get = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommandAsync ['arma_one', '%1']", _query];
+			_get = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommandAsync ['ni369893_1_DB', '%1']", _query];
 			if (_get == "") then {
 				_get = nil;
 			};

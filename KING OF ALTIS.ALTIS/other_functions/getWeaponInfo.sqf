@@ -267,13 +267,13 @@ if(_classname == "hgun_Pistol_heavy_02_F") then
 
 if(_classname == "launch_NLAW_F") then
 {
-	_rank = 18;
+	_rank = 6;
 	_mag = "NLAW_F";
 	_magtr = "NLAW_F";
 };
 if(_classname == "launch_RPG32_F") then
 {
-	_rank = 22;
+	_rank = 10;
 	_mag = "RPG32_F";
 	_magtr = "RPG32_F";
 };

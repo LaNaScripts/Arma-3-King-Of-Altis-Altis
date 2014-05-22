@@ -14,7 +14,7 @@ if (isServer) then
 				//teamkill
 				if ((faction _unit) != (faction _killer)) then
 				{
-					player_stats_add = [100,1,0];
+					player_stats_add = [150,1,0];
 					owner _killer publicVariableClient "player_stats_add";
 					
 					player_stats_add = [0,0,1];
@@ -23,7 +23,7 @@ if (isServer) then
 			}
 			else //kill with vehicle
 			{
-				player_stats_add = [100,1,0];
+				player_stats_add = [150,1,0];
 				_crew = crew _killer;
 				
 				{owner _x publicVariableClient "player_stats_add";} forEach _crew;

@@ -32,6 +32,8 @@ getRankInfo = compile preprocessFileLineNumbers "other_functions\getRankInfo.sqf
 
 getWeaponInfo = compile preprocessFileLineNumbers "other_functions\getWeaponInfo.sqf";
 
+getVehicleInfo = compile preprocessFileLineNumbers "other_functions\getVehicleInfo.sqf";
+
 filterItem = compile preprocessFileLineNumbers "other_functions\filterItem.sqf";
 
 
@@ -66,7 +68,7 @@ onEachFrame
 {
     private["_pos"];
     {
-        if(player distance _x < 800 && side _x == side player && alive _x && _x != player) then
+        if(player distance _x < 2000 && side _x == side player && alive _x && _x != player) then
         {
                 _pos = visiblePosition _x;
                 _pos set[2,(getPosATL _x select 2) + 2.2];
@@ -105,7 +107,17 @@ if(isServer) then
 
 if(isServer) then
 {
-	[WEST,"grp_1", random 50] call TAG_Grp_Spawn;
+	[EAST,"grp_1", random 400] call TAG_Grp_Spawn;
+	sleep 1;
+	[EAST,"grp_2", random 400] call TAG_Grp_Spawn;
+	sleep 1;
+	[EAST,"grp_3", random 400] call TAG_Grp_Spawn;
+	sleep 1;
+	[EAST,"grp_4", random 400] call TAG_Grp_Spawn;
+	sleep 1;
+	[EAST,"grp_5", random 400] call TAG_Grp_Spawn;
+	sleep 1;
+	[EAST,"grp_6", random 400] call TAG_Grp_Spawn;
 };
 
 if(!isServer) then

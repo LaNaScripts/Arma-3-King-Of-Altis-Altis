@@ -2,14 +2,13 @@ if (isServer) then
 {
 	_unit = _this select 0;
 	_uid = getPlayerUID _unit;
-	_name = name _unit;
 	_stats = _this select 1;
 	
 	_xp = _stats select 0;
 	_kills = _stats select 1;
 	_deaths = _stats select 2;
 	
-	_query = "UPDATE player SET name='" + (_name) + "',xp='" + (str _xp) + "',kills='" + (str _kills) + "',deaths='" + (str _deaths) + "'";
+	_query = "UPDATE player SET xp=" + "'" + (str _xp) + "',kills='" + (str _kills) + "',deaths='" + (str _deaths) + "'";
 
 	_check = format [" WHERE uid = '%1'", _uid];
 	_query = _query + _check;
@@ -20,7 +19,7 @@ if (isServer) then
 	serverRunningQuery = true;
 	_return = nil;
 	while {isNil("_return")} do {
-		_return = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommandAsync ['arma_one', '%1']", _query];
+		_return = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommandAsync ['ni369893_1_DB', '%1']", _query];
 		if (_return == "") then {
 			_return = nil;
 		};

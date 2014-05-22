@@ -10,7 +10,7 @@ if (isServer) then
 	BTC_cargo_repo = "Land_HBarrierBig_F" createVehicle [- 5000,- 5000,0];publicVariable "BTC_cargo_repo";
 };
 if (isDedicated) exitwith {};
-BTC_active_lift      = 0;
+BTC_active_lift      = 1;
 BTC_active_fast_rope = 1;
 BTC_active_cargo     = 0;
 //Common
@@ -19,15 +19,15 @@ BTC_l_placement_area = 20;
 if (BTC_active_lift == 1) then
 {
 	//Lift
-	BTC_lift_pilot    = ["B_Helipilot_F"];
+	BTC_lift_pilot    = [];
 	BTC_lift          = 1;
 	BTC_lifted        = 0;
-	BTC_lift_min_h    = 7;
-	BTC_lift_max_h    = 12;
-	BTC_lift_radius   = 3;
-	BTC_def_hud       = 1;
-	BTC_def_pip       = 1;
-	BTC_l_def_veh_pip = ["B_Heli_Light_01_F","O_Heli_Light_02_F","B_Heli_Transport_01_F","I_Heli_Transport_02_F"];
+	BTC_lift_min_h    = 5;
+	BTC_lift_max_h    = 15;
+	BTC_lift_radius   = 4;
+	BTC_def_hud       = 0;
+	BTC_def_pip       = 0;
+	BTC_l_def_veh_pip = [];
 	BTC_l_pip_cond    = false;
 	BTC_cargo_lifted  = objNull;
 	BTC_Hud_Cond      = false;
@@ -40,14 +40,18 @@ if (BTC_active_lift == 1) then
 		_array   = [];
 		switch (typeOf _chopper) do
 		{
-			//MH9
-			case "B_Heli_Light_01_F"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Quadbike_01_base_F","Strategic"];};
-			//PO-30
-			case "O_Heli_Light_02_F"     : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car"];};
-			//UH80
-			case "B_Heli_Transport_01_F" : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car","Truck","Wheeled_APC","Air","Ship"];};
-			//CH49
-			case "I_Heli_Transport_02_F" : {_array = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic","StaticWeapon","Car","Truck","Wheeled_APC","Tracked_APC","APC_Tracked_01_base_F","APC_Tracked_02_base_F","Air","Ship"];};
+			//orca
+			case "O_Heli_Light_02_unarmed_F"     : {_array = ["B_Quadbike_01_F","B_MRAP_01_F","B_G_Offroad_01_armed_F","B_MRAP_01_hmg_F","O_MRAP_02_F","O_MRAP_02_hmg_F","I_MRAP_03_F","I_MRAP_03_hmg_F","B_MRAP_01_gmg_F","O_MRAP_02_gmg_F","I_MRAP_03_gmg_F"];};
+			case "O_Heli_Light_02_F"             : {_array = ["B_Quadbike_01_F","B_MRAP_01_F","B_G_Offroad_01_armed_F","B_MRAP_01_hmg_F","O_MRAP_02_F","O_MRAP_02_hmg_F","I_MRAP_03_F","I_MRAP_03_hmg_F","B_MRAP_01_gmg_F","O_MRAP_02_gmg_F","I_MRAP_03_gmg_F"];};
+			//hellcat
+			case "I_Heli_light_03_unarmed_F"     : {_array = ["B_Quadbike_01_F","B_MRAP_01_F","B_G_Offroad_01_armed_F","B_MRAP_01_hmg_F","O_MRAP_02_F","O_MRAP_02_hmg_F","I_MRAP_03_F","I_MRAP_03_hmg_F","B_MRAP_01_gmg_F","O_MRAP_02_gmg_F","I_MRAP_03_gmg_F"];};
+			case "I_Heli_light_03_F"             : {_array = ["B_Quadbike_01_F","B_MRAP_01_F","B_G_Offroad_01_armed_F","B_MRAP_01_hmg_F","O_MRAP_02_F","O_MRAP_02_hmg_F","I_MRAP_03_F","I_MRAP_03_hmg_F","B_MRAP_01_gmg_F","O_MRAP_02_gmg_F","I_MRAP_03_gmg_F"];};
+			//blackhawk
+			case "B_Heli_Transport_01_F"         : {_array = ["B_Quadbike_01_F","B_MRAP_01_F","B_G_Offroad_01_armed_F","B_MRAP_01_hmg_F","O_MRAP_02_F","O_MRAP_02_hmg_F","I_MRAP_03_F","I_MRAP_03_hmg_F","B_MRAP_01_gmg_F","O_MRAP_02_gmg_F","I_MRAP_03_gmg_F"];};
+			
+			//mohawk
+			case "I_Heli_Transport_02_F"         : {_array = ["B_Quadbike_01_F","B_MRAP_01_F","B_G_Offroad_01_armed_F","B_MRAP_01_hmg_F","O_MRAP_02_F","O_MRAP_02_hmg_F","I_MRAP_03_F","I_MRAP_03_hmg_F","B_MRAP_01_gmg_F","O_MRAP_02_gmg_F","I_MRAP_03_gmg_F",
+															  "B_APC_Tracked_01_AA_F","B_APC_Tracked_01_rcws_F","B_APC_Wheeled_01_cannon_F","O_APC_Wheeled_02_rcws_F","O_APC_Tracked_02_cannon_F","O_APC_Tracked_02_AA_F","I_APC_Wheeled_03_cannon_F","I_APC_tracked_03_cannon_F"];};
 
 		};
 		_array
@@ -58,34 +62,8 @@ if (BTC_active_fast_rope == 1) then
 	//Fast roping
 	BTC_fast_rope_h = 35;
 	BTC_fast_rope_h_min = 5;
-	BTC_roping_chopper = ["B_Heli_Transport_01_F","B_Heli_Transport_01_camo_F"];
+	BTC_roping_chopper = ["O_Heli_Light_02_unarmed_F","O_Heli_Light_02_F","I_Heli_light_03_unarmed_F","I_Heli_light_03_F","B_Heli_Transport_01_F","I_Heli_Transport_02_F"];
 	_rope = [] execVM "=BTC=_logistic\=BTC=_fast_roping\=BTC=_fast_roping_init.sqf";
-};
-if (BTC_active_cargo == 1) then
-{
-	//Cargo System
-	_cargo = [] execVM "=BTC=_logistic\=BTC=_cargo_system\=BTC=_cargo_system_init.sqf";
-	BTC_def_vehicles     = ["Tank","Wheeled_APC","Truck","Car","Helicopter"];
-	BTC_def_cargo        = ["Motorcycle","ReammoBox","ReammoBox_F","Strategic"];
-	BTC_def_drag         = ["ReammoBox","ReammoBox_F","Strategic"];
-	BTC_def_placement    = ["ReammoBox","ReammoBox_F","Strategic"];
-	BTC_cargo_selected   = objNull;
-	BTC_def_cc =
-	[
-		"B_Quadbike_01_F",2,
-		//Trucks
-		"B_Truck_01_transport_F",10,
-		"B_Truck_01_covered_F",10,
-		"I_Truck_02_covered_F",10,
-		"O_Truck_02_covered_F",10,
-		"I_Truck_02_transport_F",10,
-		"O_Truck_02_transport_F",10,
-		"O_Truck_02_transport_F",10
-	];
-	BTC_def_rc =
-	[
-		"Land_BagBunker_Small_F",4
-	];
 };
 //Functions
 BTC_l_paradrop =

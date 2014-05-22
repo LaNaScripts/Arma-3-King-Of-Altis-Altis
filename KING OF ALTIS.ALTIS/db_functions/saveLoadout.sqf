@@ -1,8 +1,6 @@
 if (isServer) then 
 {
 		_allWeapons = _this select 0;
-		_unit = _this select 1;
-		_uid = getPlayerUID _unit;
 		sleep 0.5;
 
 		_query = "UPDATE player SET ";
@@ -24,7 +22,7 @@ if (isServer) then
 				};
 			};
 		};
-		_check = format [" WHERE uid = '%1'", _uid];
+		_check = format [" WHERE uid = '%1'", (_allWeapons select 0)];
 		_query = _query + _check;
 
 		while{!isNil("serverRunningQuery") && serverRunningQuery} do { 
@@ -33,7 +31,7 @@ if (isServer) then
 		serverRunningQuery = true;
 		_return = nil;
 		while {isNil("_return")} do {
-			_return = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommandAsync ['arma_one', '%1']", _query];
+			_return = "Arma2Net.Unmanaged" callExtension format ["Arma2NETMySQLCommandAsync ['ni369893_1_DB', '%1']", _query];
 			if (_return == "") then {
 				_return = nil;
 			};

@@ -1,4 +1,4 @@
-onLoadName = "King of Altis";
+onLoadName = "King Of Altis";
 author = "TacEXE";
 onLoadMission="This is a WIP modification by TacEXE based off of Fepaje's King Of Hill Rarek's Invade and Annex and Team Wastelands A3 Wasteland.";
 loadScreen =  "mission.jpg";
@@ -11,7 +11,7 @@ class Header
 {
 	gameType=TDM;
 	minPlayers=1;
-	maxPlayers=50;
+	maxPlayers=48;
 };
 
 respawn = "BASE";
@@ -25,7 +25,7 @@ corpseLimit = 10;
 corpseRemovalMinTime = 400;
 corpseRemovalMaxTime = 600;
 
-wreckLimit = 10;
+wreckLimit = 20;
 wreckRemovalMinTime = 400;
 wreckRemovalMaxTime = 600;
 
@@ -57,6 +57,8 @@ class RscPicture
 
 class RscTitles
 {
+	#include "=BTC=_Logistic\=BTC=_Lift\=BTC=_Hud.h"
+	
 	class statsScreen
 	{    
 		idd = -1;
@@ -138,8 +140,8 @@ class RscTitles
 			};	
 		};
 	};
-   class wm_disp {
-        idd = -1;
+	class wm_disp {
+		idd = -1;
         onLoad = "uiNamespace setVariable ['wm_disp', _this select 0]";
         fadein = 0;
         fadeout = 0;
